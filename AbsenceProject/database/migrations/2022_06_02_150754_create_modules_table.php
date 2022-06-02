@@ -13,9 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('appartenirs', function (Blueprint $table) {
+        Schema::create('modules', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('filiere_id')->unsigned()->nullable()->references('id')->on('filieres')->onDelete('cascade');
+            $table->string('nom');
+            $table->foreignId('seance_id')->unsigned()->nullable()->references('id')->on('seances')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('appartenirs');
+        Schema::dropIfExists('modules');
     }
 };

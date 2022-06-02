@@ -13,10 +13,16 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('departements', function (Blueprint $table) {
+        Schema::create('enseignants', function (Blueprint $table) {
             $table->id();
             $table->string('nom');
-            $table->date('dateCreation');
+            $table->string('prenom');
+            $table->string('sexe');
+            $table->string('gmail');
+            $table->string('telephone');
+            $table->date('date_naissance');
+            $table->date('date_recrutement');
+            $table->string('image');
             $table->foreignId('administrateur_id')->unsigned()->nullable()->references('id')->on('administrateurs')->onDelete('cascade');
             $table->timestamps();
         });
@@ -29,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('departements');
+        Schema::dropIfExists('enseignants');
     }
 };

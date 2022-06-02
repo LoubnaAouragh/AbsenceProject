@@ -13,10 +13,10 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('etudiers', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('seance_id')->unsigned()->nullable()->references('id')->on('seances')->onDelete('cascade');
-            $table->foreignId('etudiant_id')->unsigned()->nullable()->references('id')->on('etudiants')->onDelete('cascade');
+        Schema::create('enseigners', function (Blueprint $table) {
+            $table->foreignId('enseignant_id')->unsigned()->nullable()->references('id')->on('enseignants')->onDelete('cascade');
+            $table->foreignId('module_id')->unsigned()->nullable()->references('id')->on('modules')->onDelete('cascade');
+            $table->primary(['enseignant_id','module_id']);
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('etudiers');
+        Schema::dropIfExists('enseigners');
     }
 };
