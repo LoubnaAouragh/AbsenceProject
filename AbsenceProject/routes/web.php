@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\DepartementController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,3 +20,7 @@ Route::get('/', function () {
 Route::get('/Administrateur', function () {
     return view('index');
 });
+Route::get('/Enseignant', function () {
+    return view('enseignant_view');
+});
+Route::resource('Departement','DepartementController');
